@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout 5</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background: #cbb4ff; 
+            color: white;
+        }
+        .container { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            grid-template-rows: 2fr 1fr; 
+            gap: 10px; 
+            width: 80%; 
+            height: 500px; 
+            margin: 20px auto; 
+            background: rgb(106, 13, 255);  
+            padding: 20px; 
+        }
+        .box { 
+            background: rgb(242, 157, 255); 
+            border: 1px solid gray; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Layout 5</h1>
+    <a href="index.html">Volver al Menú</a>
+    <div class="container">
+        <div class="box"></div> <div class="box"></div> <div class="box"></div>
+        <div class="box"></div> <div class="box"></div> <div class="box"></div>
+    </div>
+</body>
+</html>
