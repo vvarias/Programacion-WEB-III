@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Libros</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1>Gestión de Libros</h1>
+    
+    <form action="/create" method="POST" class="form-inline mb-3">
+      <div class="form-group mr-2">
+        <label for="titulo" class="mr-2">Título:</label>
+        <input type="text" class="form-control" name="titulo" id="titulo" required>
+      </div>
+      <div class="form-group mr-2">
+        <label for="autor" class="mr-2">Autor:</label>
+        <input type="text" class="form-control" name="autor" id="autor" required>
+      </div>
+      <div class="form-group mr-2">
+        <label for="genero" class="mr-2">Género:</label>
+        <input type="text" class="form-control" name="genero" id="genero" required>
+      </div>
+      <div class="form-group mr-2">
+        <label for="anio_publicacion" class="mr-2">Año de Publicación:</label>
+        <input type="number" class="form-control" name="anio_publicacion" id="anio_publicacion" required>
+      </div>
+      <button type="submit" class="btn btn-success">Agregar</button>
+    </form>
+    
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Género</th>
+          <th>Año de Publicación</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% books.forEach(book => { %>
+          <tr>
+            <form action="/update/<%= book.id %>" method="POST">
+              <td><%= book.id %></td>
+              <td><input type="text" class="form-control" name="titulo" value="<%= book.titulo %>" required></td>
+              <td><input type="text" class="form-control" name="autor" value="<%= book.autor %>" required></td>
+              <td><input type="text" class="form-control" name="genero" value="<%= book.genero %>" required></td>
+              <td><input type="number" class="form-control" name="anio_publicacion" value="<%= book.anio_publicacion %>" required></td>
+              <td>
+                <button type="submit" class="btn btn-primary">Editar</button>
+                <a href="/delete/<%= book.id %>" class="btn btn-danger" onclick="return confirmDelete();">Eliminar</a>
+              </td>
+            </form>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function confirmDelete() {
+      return confirm("¿Estás seguro de que deseas eliminar este libro?");
+    }
+  </script>
+</body>
+</html>
